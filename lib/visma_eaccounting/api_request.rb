@@ -152,11 +152,11 @@ module VismaEaccounting
       client = Faraday.new(self.api_url, proxy: self.proxy, ssl: { version: "TLSv1_2" }) do |faraday|
         faraday.response :raise_error
         faraday.adapter adapter
+        faraday.request :authorization, 'Bearer', self.token
         if @request_builder.debug
           faraday.response :logger, @request_builder.logger, bodies: true
         end
       end
-      client.authorization :Bearer, self.token
       client
     end
 
