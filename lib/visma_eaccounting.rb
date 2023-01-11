@@ -10,5 +10,18 @@ require 'visma_eaccounting/api_request'
 require 'visma_eaccounting/response'
 require 'visma_eaccounting/version'
 
+module Faraday
+  module NestedParamsEncoder
+    def self.escape(arg)
+      arg
+    end
+  end
+  module FlatParamsEncoder
+    def self.escape(arg)
+      arg
+    end
+  end
+end
+
 module VismaEaccounting
 end
